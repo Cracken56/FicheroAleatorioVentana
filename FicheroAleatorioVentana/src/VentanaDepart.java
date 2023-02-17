@@ -33,6 +33,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 	JButton fin = new JButton("CERRAR");
 	Color c; // para poner colores
 	// WHITE,LIGHTGRAY,GRAY,DARKGRAY,BLUE,BLACK,RED,MAGENTA,PINK,ORANGE,CYAN,GREEN,YELLOW
+	private String noExisteDepart;
 
 	public VentanaDepart(JFrame f) {
 		setTitle("GESTIÓN DE DEPARTAMENTOS.");
@@ -99,6 +100,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 		borra.addActionListener(this);
 		modif.addActionListener(this);
 		ver.addActionListener(this);
+		noExisteDepart = "DEPARTAMENTO NO EXISTE.";
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -122,7 +124,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 
 			} catch (java.lang.NumberFormatException ex) // controlar el error del Integer.parseInt
 			{
-				mensaje.setText("DEPARTAMENTO ERRï¿½NEO.");
+				mensaje.setText("DEPARTAMENTO ERRÓNEO.");
 			} catch (IOException ex2) {
 				mensaje.setText("ERROR EN EL FICHERO. Fichero no existe. (ALTA)");
 				// lo creo
@@ -130,7 +132,6 @@ public class VentanaDepart extends JFrame implements ActionListener {
 			}
 		}
 
-		final String NOEXISTEDEPART = "DEPARTAMENTO NO EXISTE.";
 		if (e.getSource() == consu) { // SE PULSA EL BOTON consultar
 			mensaje.setText(" has pulsado el boton alta");
 			try {
@@ -140,7 +141,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 						mensaje.setText(existedepart);
 						visualiza(dep);
 					} else {
-						mensaje.setText(NOEXISTEDEPART);
+						mensaje.setText(noExisteDepart);
 						nombre.setText(" ");
 						loc.setText(" ");
 					}
@@ -176,7 +177,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 							loc.setText(" ");
 						}
 					} else {
-						mensaje.setText(NOEXISTEDEPART);
+						mensaje.setText(noExisteDepart);
 						nombre.setText(" ");
 						loc.setText(" ");
 					}
@@ -207,7 +208,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 							mensaje.setText(" REGISTRO MODIFICADO: " + dep);
 						}
 					} else {
-						mensaje.setText(NOEXISTEDEPART);
+						mensaje.setText(noExisteDepart);
 						nombre.setText(" ");
 						loc.setText(" ");
 					}
