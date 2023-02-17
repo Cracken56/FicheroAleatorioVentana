@@ -130,6 +130,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 			}
 		}
 
+		final String NOEXISTEDEPART = "DEPARTAMENTO NO EXISTE.";
 		if (e.getSource() == consu) { // SE PULSA EL BOTON consultar
 			mensaje.setText(" has pulsado el boton alta");
 			try {
@@ -139,7 +140,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 						mensaje.setText(existedepart);
 						visualiza(dep);
 					} else {
-						mensaje.setText("DEPARTAMENTO NO EXISTE.");
+						mensaje.setText(NOEXISTEDEPART);
 						nombre.setText(" ");
 						loc.setText(" ");
 					}
@@ -175,7 +176,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 							loc.setText(" ");
 						}
 					} else {
-						mensaje.setText("DEPARTAMENTO NO EXISTE.");
+						mensaje.setText(NOEXISTEDEPART);
 						nombre.setText(" ");
 						loc.setText(" ");
 					}
@@ -206,7 +207,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 							mensaje.setText(" REGISTRO MODIFICADO: " + dep);
 						}
 					} else {
-						mensaje.setText("DEPARTAMENTO NO EXISTE.");
+						mensaje.setText(NOEXISTEDEPART);
 						nombre.setText(" ");
 						loc.setText(" ");
 					}
