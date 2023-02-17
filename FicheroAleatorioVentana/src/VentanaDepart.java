@@ -34,6 +34,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 	Color c; // para poner colores
 	// WHITE,LIGHTGRAY,GRAY,DARKGRAY,BLUE,BLACK,RED,MAGENTA,PINK,ORANGE,CYAN,GREEN,YELLOW
 	private String noExisteDepart;
+	private String depar_error;
 
 	public VentanaDepart(JFrame f) {
 		setTitle("GESTIÓN DE DEPARTAMENTOS.");
@@ -101,6 +102,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 		modif.addActionListener(this);
 		ver.addActionListener(this);
 		noExisteDepart = "DEPARTAMENTO NO EXISTE.";
+		depar_error = "DEPARTAMENTO ERRÓNEO";
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -124,7 +126,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 
 			} catch (java.lang.NumberFormatException ex) // controlar el error del Integer.parseInt
 			{
-				mensaje.setText("DEPARTAMENTO ERRÓNEO.");
+				mensaje.setText(depar_error);
 			} catch (IOException ex2) {
 				mensaje.setText("ERROR EN EL FICHERO. Fichero no existe. (ALTA)");
 				// lo creo
@@ -151,7 +153,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 
 			} catch (java.lang.NumberFormatException ex) // controlar el error del Integer.parseInt
 			{
-				mensaje.setText("DEPARTAMENTO ERRÓNEO");
+				mensaje.setText(depar_error);
 			} catch (IOException ex2) {
 				mensaje.setText(" ERROR EN EL FICHERO. Fichero no existe. (ALTA)");
 			}
@@ -187,7 +189,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 
 			} catch (java.lang.NumberFormatException ex) // controlar el error del Integer.parseInt
 			{
-				mensaje.setText("DEPARTAMENTO ERRÓNEO");
+				mensaje.setText(depar_error);
 			} catch (IOException ex2) {
 				mensaje.setText("ERROR EN EL FICHERO. Fichero no existe. (BORRAR)");
 			}
@@ -218,7 +220,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 
 			} catch (java.lang.NumberFormatException ex) // controlar el error del Integer.parseInt
 			{
-				mensaje.setText("DEPARTAMENTO ERRÓNEO");
+				mensaje.setText(depar_error);
 			} catch (IOException ex2) {
 				mensaje.setText(" ERROR EN EL FICHERO. Fichero no existe. (MODIFICAR)");
 			}
