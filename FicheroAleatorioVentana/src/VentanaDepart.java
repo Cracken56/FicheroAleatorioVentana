@@ -11,13 +11,14 @@ import java.io.RandomAccessFile;
 import javax.swing.*;
 
 public class VentanaDepart extends JFrame implements ActionListener {
+
 	private static final long serialVersionUID = 1L;
 	JTextField num = new JTextField(10);
 	JTextField nombre = new JTextField(25);
 	JTextField loc = new JTextField(25);
 
 	JLabel mensaje = new JLabel(" ----------------------------- ");
-	JLabel titulo = new JLabel("GESTIÓN DE DEPARTAMENTOS.");
+	JLabel titulo = new JLabel("GESTIï¿½N DE DEPARTAMENTOS.");
 
 	JLabel lnum = new JLabel("NUMERO DEPARTAMENTO:");
 	JLabel lnom = new JLabel("NOMBRE:");
@@ -34,7 +35,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 	// WHITE,LIGHTGRAY,GRAY,DARKGRAY,BLUE,BLACK,RED,MAGENTA,PINK,ORANGE,CYAN,GREEN,YELLOW
 
 	public VentanaDepart(JFrame f) {
-		setTitle("GESTI�N DE DEPARTAMENTOS.");
+		setTitle("GESTIï¿½N DE DEPARTAMENTOS.");
 
 		JPanel p0 = new JPanel();
 		c = Color.CYAN;
@@ -79,7 +80,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 
 		// para ver la ventana y colocar los controles verticalmente
 		setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-		// a�adir los panel al frame
+		// aï¿½adir los panel al frame
 		add(p0);
 		add(p1);
 		add(p2);
@@ -102,15 +103,13 @@ public class VentanaDepart extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		int dep, confirm;
-		String existedepart = "DEPARTAMENTO EXISTE.";
-		final String DEPARTAMENTO_NO_EXISTE = "DEPARTAMENTO NO EXISTE.";
 		if (e.getSource() == balta) { // SE PULSA EL BOTON alta
 			mensaje.setText(" has pulsado el boton alta");
 			try {
 				dep = Integer.parseInt(num.getText());
 				if (dep > 0) {
 					if (consultar(dep)) {
-						mensaje.setText(existedepart);
+						mensaje.setText("DEPARTAMENTO EXISTE.");
 					} else {
 						mensaje.setText("NUEVO DEPARTAMENTO.");
 						grabar(dep, nombre.getText(), loc.getText());
@@ -122,7 +121,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 
 			} catch (java.lang.NumberFormatException ex) // controlar el error del Integer.parseInt
 			{
-				mensaje.setText("DEPARTAMENTO ERR�NEO.");
+				mensaje.setText("DEPARTAMENTO ERRï¿½NEO.");
 			} catch (IOException ex2) {
 				mensaje.setText("ERRORRR EN EL FICHERO. Fichero no existe. (ALTA)");
 				// lo creo
@@ -136,10 +135,10 @@ public class VentanaDepart extends JFrame implements ActionListener {
 				dep = Integer.parseInt(num.getText());
 				if (dep > 0) {
 					if (consultar(dep)) {
-						mensaje.setText(existedepart);
+						mensaje.setText("DEPARTAMENTO EXISTE.");
 						visualiza(dep);
 					} else {
-						mensaje.setText(DEPARTAMENTO_NO_EXISTE);
+						mensaje.setText("DEPARTAMENTO NO EXISTE.");
 						nombre.setText(" ");
 						loc.setText(" ");
 					}
@@ -149,9 +148,9 @@ public class VentanaDepart extends JFrame implements ActionListener {
 
 			} catch (java.lang.NumberFormatException ex) // controlar el error del Integer.parseInt
 			{
-				mensaje.setText("DEPARTAMENTO ERRÓNEO");
+				mensaje.setText("DEPARTAMENTO ERRï¿½NEO");
 			} catch (IOException ex2) {
-				mensaje.setText(" ERROR EN EL FICHERO. Fichero no existe. (ALTA)");
+				mensaje.setText(" ERRORRR EN EL FICHERO. Fichero no existe. (ALTA)");
 			}
 
 		}
@@ -162,7 +161,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 				dep = Integer.parseInt(num.getText());
 				if (dep > 0) {
 					if (consultar(dep)) {
-						mensaje.setText(existedepart);
+						mensaje.setText("DEPARTAMENTO EXISTE.");
 						visualiza(dep);
 						confirm = JOptionPane.showConfirmDialog(this, "ESTAS SEGURO DE BORRAR...", "AVISO BORRADO.",
 								JOptionPane.OK_CANCEL_OPTION);
@@ -175,7 +174,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 							loc.setText(" ");
 						}
 					} else {
-						mensaje.setText(DEPARTAMENTO_NO_EXISTE);
+						mensaje.setText("DEPARTAMENTO NO EXISTE.");
 						nombre.setText(" ");
 						loc.setText(" ");
 					}
@@ -185,7 +184,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 
 			} catch (java.lang.NumberFormatException ex) // controlar el error del Integer.parseInt
 			{
-				mensaje.setText("DEPARTAMENTO ERR�NEO");
+				mensaje.setText("DEPARTAMENTO ERRï¿½NEO");
 			} catch (IOException ex2) {
 				mensaje.setText("ERRORRR EN EL FICHERO. Fichero no existe. (BORRAR)");
 			}
@@ -196,9 +195,9 @@ public class VentanaDepart extends JFrame implements ActionListener {
 				dep = Integer.parseInt(num.getText());
 				if (dep > 0) {
 					if (consultar(dep)) {
-						mensaje.setText(existedepart);
+						mensaje.setText("DEPARTAMENTO EXISTE.");
 						confirm = JOptionPane.showConfirmDialog(this, "ESTAS SEGURO DE MODIFICAR...",
-								"AVISO MODIFICACI�N.", JOptionPane.OK_CANCEL_OPTION);
+								"AVISO MODIFICACIï¿½N.", JOptionPane.OK_CANCEL_OPTION);
 						// si devuelve 0 es OK
 						// mensaje.setText(" has pulsado el boton Borrar "+ confirm);
 						if (confirm == 0) {
@@ -206,7 +205,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 							mensaje.setText(" REGISTRO MODIFICADO: " + dep);
 						}
 					} else {
-						mensaje.setText(DEPARTAMENTO_NO_EXISTE);
+						mensaje.setText("DEPARTAMENTO NO EXISTE.");
 						nombre.setText(" ");
 						loc.setText(" ");
 					}
@@ -216,7 +215,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 
 			} catch (java.lang.NumberFormatException ex) // controlar el error del Integer.parseInt
 			{
-				mensaje.setText("DEPARTAMENTO ERR�NEO");
+				mensaje.setText("DEPARTAMENTO ERRï¿½NEO");
 			} catch (IOException ex2) {
 				mensaje.setText(" ERRORRR EN EL FICHERO. Fichero no existe. (MODIFICAR)");
 			}
@@ -253,7 +252,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 			pos = 0; // para situarnos al principio
 			System.out.println(" ------------------------------------------");
 			System.out.println(" - - - VISUALIZO POR CONSOLAAAAA ");
-			for (;;) { // recorro el fichero, visualiza tambi�n las posiciones vac�as
+			for (;;) { // recorro el fichero, visualiza tambiï¿½n las posiciones vacï¿½as
 				file.seek(pos);
 				dep = file.readInt(); // obtengo el dep
 				for (int i = 0; i < cad.length; i++) {
@@ -276,9 +275,9 @@ public class VentanaDepart extends JFrame implements ActionListener {
 			} // fin bucle for
 			file.close(); // cerrar fichero
 			System.out.println(" ------------------------------------------");
-		} else // esto s�lo sale la primera vez
+		} else // esto sï¿½lo sale la primera vez
 		{
-			System.out.println(" ---------FICHERO VACI�IOOOO --------------------");
+			System.out.println(" ---------FICHERO VACIï¿½IOOOO --------------------");
 		}
 	}// fin verporconsola
 
@@ -291,7 +290,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 		try {
 			pos = 44 * (dep - 1);
 			if (file.length() == 0) {
-				return false; // si est� vac�o
+				return false; // si estï¿½ vacï¿½o
 			}
 			file.seek(pos);
 			depa = file.readInt();
@@ -406,7 +405,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 			RandomAccessFile file = new RandomAccessFile(fichero, "rw");
 			// Calculo del reg a leer
 			pos = 44 * (dep - 1);
-			// if (file.length()==0) return false; // si est� vac�o
+			// if (file.length()==0) return false; // si estï¿½ vacï¿½o
 
 			file.seek(pos);
 			file.writeInt(dep);
