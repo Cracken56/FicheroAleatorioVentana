@@ -18,7 +18,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 	JTextField loc = new JTextField(25);
 
 	JLabel mensaje = new JLabel(" ----------------------------- ");
-	JLabel titulo = new JLabel("GESTIï¿½N DE DEPARTAMENTOS.");
+	JLabel titulo = new JLabel("GESTIÓN DE DEPARTAMENTOS.");
 
 	JLabel lnum = new JLabel("NUMERO DEPARTAMENTO:");
 	JLabel lnom = new JLabel("NOMBRE:");
@@ -35,7 +35,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 	// WHITE,LIGHTGRAY,GRAY,DARKGRAY,BLUE,BLACK,RED,MAGENTA,PINK,ORANGE,CYAN,GREEN,YELLOW
 
 	public VentanaDepart(JFrame f) {
-		setTitle("GESTIï¿½N DE DEPARTAMENTOS.");
+		setTitle("GESTIÓN DE DEPARTAMENTOS.");
 
 		JPanel p0 = new JPanel();
 		c = Color.CYAN;
@@ -123,7 +123,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 			{
 				mensaje.setText("DEPARTAMENTO ERRï¿½NEO.");
 			} catch (IOException ex2) {
-				mensaje.setText("ERRORRR EN EL FICHERO. Fichero no existe. (ALTA)");
+				mensaje.setText("ERROR EN EL FICHERO. Fichero no existe. (ALTA)");
 				// lo creo
 
 			}
@@ -148,9 +148,9 @@ public class VentanaDepart extends JFrame implements ActionListener {
 
 			} catch (java.lang.NumberFormatException ex) // controlar el error del Integer.parseInt
 			{
-				mensaje.setText("DEPARTAMENTO ERRï¿½NEO");
+				mensaje.setText("DEPARTAMENTO ERRÓNEO");
 			} catch (IOException ex2) {
-				mensaje.setText(" ERRORRR EN EL FICHERO. Fichero no existe. (ALTA)");
+				mensaje.setText(" ERROR EN EL FICHERO. Fichero no existe. (ALTA)");
 			}
 
 		}
@@ -184,9 +184,9 @@ public class VentanaDepart extends JFrame implements ActionListener {
 
 			} catch (java.lang.NumberFormatException ex) // controlar el error del Integer.parseInt
 			{
-				mensaje.setText("DEPARTAMENTO ERRï¿½NEO");
+				mensaje.setText("DEPARTAMENTO ERRÓNEO");
 			} catch (IOException ex2) {
-				mensaje.setText("ERRORRR EN EL FICHERO. Fichero no existe. (BORRAR)");
+				mensaje.setText("ERROR EN EL FICHERO. Fichero no existe. (BORRAR)");
 			}
 		}
 		if (e.getSource() == modif) { // SE PULSA EL BOTON modificar
@@ -197,7 +197,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 					if (consultar(dep)) {
 						mensaje.setText("DEPARTAMENTO EXISTE.");
 						confirm = JOptionPane.showConfirmDialog(this, "ESTAS SEGURO DE MODIFICAR...",
-								"AVISO MODIFICACIï¿½N.", JOptionPane.OK_CANCEL_OPTION);
+								"AVISO MODIFICACIÓN.", JOptionPane.OK_CANCEL_OPTION);
 						// si devuelve 0 es OK
 						// mensaje.setText(" has pulsado el boton Borrar "+ confirm);
 						if (confirm == 0) {
@@ -215,9 +215,9 @@ public class VentanaDepart extends JFrame implements ActionListener {
 
 			} catch (java.lang.NumberFormatException ex) // controlar el error del Integer.parseInt
 			{
-				mensaje.setText("DEPARTAMENTO ERRï¿½NEO");
+				mensaje.setText("DEPARTAMENTO ERRÓNEO");
 			} catch (IOException ex2) {
-				mensaje.setText(" ERRORRR EN EL FICHERO. Fichero no existe. (MODIFICAR)");
+				mensaje.setText(" ERROR EN EL FICHERO. Fichero no existe. (MODIFICAR)");
 			}
 		}
 		if (e.getSource() == fin) { // SE PULSA EL BOTON salir
@@ -226,10 +226,10 @@ public class VentanaDepart extends JFrame implements ActionListener {
 		}
 		if (e.getSource() == ver) { // SE PULSA EL BOTON ver por consola
 			try {
-				mensaje.setText("Visualizando el fichero por la consolaa.....");
+				mensaje.setText("Visualizando el fichero por la consola.....");
 				verporconsola();
 			} catch (IOException e1) {
-				System.out.println("ERRROR AL LEEERRRRRR AleatorioDep.dat");
+				System.out.println("ERRROR AL LEER AleatorioDep.dat");
 				// e1.printStackTrace();
 			}
 		}
@@ -251,7 +251,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 		if (file.length() > 0) {
 			pos = 0; // para situarnos al principio
 			System.out.println(" ------------------------------------------");
-			System.out.println(" - - - VISUALIZO POR CONSOLAAAAA ");
+			System.out.println(" - - - VISUALIZO POR CONSOLA ");
 			for (;;) { // recorro el fichero, visualiza tambiï¿½n las posiciones vacï¿½as
 				file.seek(pos);
 				dep = file.readInt(); // obtengo el dep
@@ -277,7 +277,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 			System.out.println(" ------------------------------------------");
 		} else // esto sï¿½lo sale la primera vez
 		{
-			System.out.println(" ---------FICHERO VACIï¿½IOOOO --------------------");
+			System.out.println(" ---------FICHERO VACÍO --------------------");
 		}
 	}// fin verporconsola
 
@@ -302,7 +302,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 				return false;
 			}
 		} catch (IOException ex2) {
-			System.out.println(" ERRORRR al leerrrrr..");
+			System.out.println(" ERROR al leer.");
 			return false;
 		}
 	} // fin consultar
@@ -335,7 +335,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 			loc.setText(loca);
 			file.close();
 		} catch (IOException e1) {
-			System.out.println("ERRROR AL LEEERRRRRR AleatorioDep.dat");
+			System.out.println("ERROR AL LEER AleatorioDep.dat");
 			e1.printStackTrace();
 		}
 	} // fin visualiza
@@ -364,7 +364,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 
 			file.close();
 		} catch (IOException e1) {
-			System.out.println("ERRROR AL BORRARRR AleatorioDep.dat");
+			System.out.println("ERROR AL BORRAR AleatorioDep.dat");
 			e1.printStackTrace();
 		}
 	} // fin borrar
@@ -388,11 +388,11 @@ public class VentanaDepart extends JFrame implements ActionListener {
 			buffer = new StringBuffer(loca);
 			buffer.setLength(10);
 			file.writeChars(buffer.toString());
-			System.out.println("----REGISTRO MODIFICADOOO--------");
+			System.out.println("----REGISTRO MODIFICADO--------");
 
 			file.close();
 		} catch (IOException e1) {
-			System.out.println("ERRROR AL MODIFICARRR AleatorioDep.dat");
+			System.out.println("ERROR AL MODIFICAR AleatorioDep.dat");
 			e1.printStackTrace();
 		}
 	} // fin modificar
@@ -416,9 +416,9 @@ public class VentanaDepart extends JFrame implements ActionListener {
 			buffer.setLength(10);
 			file.writeChars(buffer.toString());// insertar loc
 			file.close();
-			System.out.println(" GRABADOOO el " + dep);
+			System.out.println(" GRABADO el " + dep);
 		} catch (IOException e1) {
-			System.out.println("ERRROR AL grabarr AleatorioDep.dat");
+			System.out.println("ERROR AL grabar AleatorioDep.dat");
 			e1.printStackTrace();
 		}
 	} // fin grabar
