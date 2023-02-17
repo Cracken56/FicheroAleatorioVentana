@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
@@ -10,6 +9,12 @@ import java.io.RandomAccessFile;
 
 import javax.swing.*;
 
+/**
+*
+*Esta clase representa una ventana de gestión de departamentos.
+* @author Adrià Sierra
+* @version 1.0
+*/
 public class VentanaDepart extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
@@ -18,7 +23,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 	JTextField loc = new JTextField(25);
 
 	JLabel mensaje = new JLabel(" ----------------------------- ");
-	JLabel titulo = new JLabel("GESTIÓN DE DEPARTAMENTOS.");
+	JLabel titulo = new JLabel("GESTION DE DEPARTAMENTOS.");
 
 	JLabel lnum = new JLabel("NUMERO DEPARTAMENTO:");
 	JLabel lnom = new JLabel("NOMBRE:");
@@ -33,11 +38,21 @@ public class VentanaDepart extends JFrame implements ActionListener {
 	JButton fin = new JButton("CERRAR");
 	Color c; // para poner colores
 	// WHITE,LIGHTGRAY,GRAY,DARKGRAY,BLUE,BLACK,RED,MAGENTA,PINK,ORANGE,CYAN,GREEN,YELLOW
+	/**
+	 * String que nos dice que un departamento no existe.
+	 */
 	private String noExisteDepart;
+	/**
+	 * String que nos dice que un departamento es erroneo.
+	 */
 	private String depar_error;
 
+	/**
+	 * Constructor de la clase VentanaDepart.
+	 * @param f Frame que contiene la ventana
+	 */
 	public VentanaDepart(JFrame f) {
-		setTitle("GESTIÓN DE DEPARTAMENTOS.");
+		setTitle("GESTION DE DEPARTAMENTOS.");
 
 		JPanel p0 = new JPanel();
 		c = Color.CYAN;
@@ -102,9 +117,13 @@ public class VentanaDepart extends JFrame implements ActionListener {
 		modif.addActionListener(this);
 		ver.addActionListener(this);
 		noExisteDepart = "DEPARTAMENTO NO EXISTE.";
-		depar_error = "DEPARTAMENTO ERRÓNEO";
+		depar_error = "DEPARTAMENTO ERRONEO";
 	}
 
+	/**
+	 * Manejador de eventos de acción para la ventana de departamentos.
+	 * @param e Evento de acción.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		int dep, confirm;
 		String existedepart = "DEPARTAMENTO EXISTE.";
@@ -122,7 +141,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 				mensaje.setText("Visualizando el fichero por la consola.....");
 				verporconsola();
 			} catch (IOException e1) {
-				System.out.println("ERRROR AL LEER AleatorioDep.dat");
+				System.out.println("ERROR AL LEER AleatorioDep.dat");
 				// e1.printStackTrace();
 			}
 		}
@@ -134,6 +153,10 @@ public class VentanaDepart extends JFrame implements ActionListener {
 		}
 	}
 
+	/**
+	* Modifica un departamento existente en el archivo de departamentos
+	* @param e El evento que desencadenó la acción
+	*/
 	private void modificarDepartamento(ActionEvent e, String existedepart) {
 		int dep;
 		int confirm;
@@ -145,7 +168,7 @@ public class VentanaDepart extends JFrame implements ActionListener {
 					if (consultar(dep)) {
 						mensaje.setText(existedepart);
 						confirm = JOptionPane.showConfirmDialog(this, "ESTAS SEGURO DE MODIFICAR...",
-								"AVISO MODIFICACIÓN.", JOptionPane.OK_CANCEL_OPTION);
+								"AVISO MODIFICACION.", JOptionPane.OK_CANCEL_OPTION);
 						// si devuelve 0 es OK
 						// mensaje.setText(" has pulsado el boton Borrar "+ confirm);
 						if (confirm == 0) {
@@ -170,6 +193,11 @@ public class VentanaDepart extends JFrame implements ActionListener {
 		}
 	}
 
+	/**
+	 * Borra un departamento existente en el archivo de departamentos
+	 * @param e El evento que desencadenó la acción
+	 * @param existedepart Mensaje que se mostrará si el departamento existe
+	 */
 	private void borrarDepartamento(ActionEvent e, String existedepart) {
 		int dep;
 		int confirm;
@@ -209,6 +237,11 @@ public class VentanaDepart extends JFrame implements ActionListener {
 		}
 	}
 
+	/**
+	 * Consulta un departamento existente en el archivo de departamentos
+	 * @param e El evento que desencadenó la acción
+	 * @param existedepart Mensaje que se mostrará si el departamento existe
+	 */
 	private void consultarDepartamento(ActionEvent e, String existedepart) {
 		int dep;
 		if (e.getSource() == consu) { // SE PULSA EL BOTON consultar
@@ -238,6 +271,11 @@ public class VentanaDepart extends JFrame implements ActionListener {
 		}
 	}
 
+	/**
+	 * Inserta un departamento existente en el archivo de departamentos
+	 * @param e El evento que desencadenó la acción
+	 * @param existedepart Mensaje que se mostrará si el departamento existe
+	 */
 	private void insertarDepartamento(ActionEvent e, String existedepart) {
 		int dep;
 		if (e.getSource() == balta) { // SE PULSA EL BOTON alta
@@ -262,11 +300,17 @@ public class VentanaDepart extends JFrame implements ActionListener {
 			} catch (IOException ex2) {
 				mensaje.setText("ERROR EN EL FICHERO. Fichero no existe. (ALTA)");
 				// lo creo
-
 			}
 		}
 	}
 
+	/**
+	* Imprime en la consola el contenido del archivo "AleatorioDep.dat", que contiene
+	* información de departamentos. Si el archivo está vacío, se muestra un mensaje
+	* indicándolo. Los datos de cada departamento se muestran con el siguiente formato:
+	* "DEP: [dep], Nombre: [nombre], Localidad: [localidad]".
+	* @throws IOException si ocurre un error al leer el archivo.
+	*/
 	public void verporconsola() throws IOException {
 		String nom = "", loc = "";
 		int dep = 0;
@@ -303,10 +347,15 @@ public class VentanaDepart extends JFrame implements ActionListener {
 			System.out.println(" ------------------------------------------");
 		} else // esto sï¿½lo sale la primera vez
 		{
-			System.out.println(" ---------FICHERO VACÍO --------------------");
+			System.out.println(" ---------FICHERO VACIO --------------------");
 		}
 	}// fin verporconsola
 
+	/*
+	 * @param dep El número del departamento a consultar
+	 * Metodo que consulta si existe un departamento en el fichero
+	 * AleatorioDepart.dat
+	 */
 	boolean consultar(int dep) throws IOException {
 		long pos;
 		int depa;
@@ -366,6 +415,11 @@ public class VentanaDepart extends JFrame implements ActionListener {
 		}
 	} // fin visualiza
 
+	/**
+	 * Borra un departamento del archivo de departamentos
+	 * 
+	 * @param dep El número del departamento a borrar
+	 */
 	void borrar(int dep) { // con borrar ponemos a 0 el dep que se quiere borrar
 		// y a blancos el nombre y la localidad
 		String nom = "", loca = "";
